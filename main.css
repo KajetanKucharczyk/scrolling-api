@@ -1,0 +1,26 @@
+html, body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+.page-label {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+.label {
+  position: relative;
+  width: 100%;
+}
+.label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  transition: width .25s;
+}
