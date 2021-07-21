@@ -2,18 +2,14 @@
 
 ## MAIN FUNCTION
   
-import scrolling from "./scrolling.js"; - imports js functionality (if stored locally)  
-or  
-import scrolling from "kkucharczyk/scrolling.min.js"; - imports js functionality (if stored on my server)  
+```import scrolling from "./scrolling.js";``` imports js functionality (if stored locally)
   
   
-scrolling(TARGET : OBLIGATORY (STRING), PAGES : OBLIGATORY (ARRAY), OPTIONS : OPTIONAL (OBJECT));
+```scrolling(TARGET : OBLIGATORY (STRING), PAGES : OBLIGATORY (ARRAY), OPTIONS : OPTIONAL (OBJECT));```
 
-TARGET - where to put ready dom elements like pages, buttons. As a TARGET must be passed an ID of DOM element. An ID must be unique.
-PAGES - HTML div elements () to render on pages. Page must to have UNIQUE id. PAGES is array, so if there is one page, should be passed also as array. More info below.
-OPTIONS - non obligatory options. Passed as object. More info below.
-
-All css styles are included in the following script. The original address of CSS file is: . The file can be downloaded from this link. If you want to include downloaded CSS file or your own, use userCSS in options. More info below.
+```TARGET``` where to put ready dom elements like pages, buttons. As a TARGET must be passed an ID of DOM element. An ID must be unique.  
+```PAGES``` HTML div elements () to render on pages. Page must to have UNIQUE id. PAGES is array, so if there is one page, should be passed also as array. More info below.  
+```OPTIONS``` non obligatory options. Passed as object. More info below.
 
 ## MORE INFO
 ```
@@ -64,32 +60,38 @@ blockScroll          - Blocking default scroll. As default set to FALSE. It prod
 
 HTML: 
 ```
-<div id="root"></div>  
-<div id = "page-1">SOME TEXT</div>  
-<div id = "page-2">SOME ANOTHER TEXT</div>  
-<div id = "page-3">bla bla bla bla bla bla bla </div>  
-<div id = "page-4">bla bla bla bla bla bla bla </div>  
-<div id = "page-5">bla bla bla bla bla bla bla </div>  
-<div id = "page-6">bla bla bla bla bla bla bla </div>  
+<div style="width: 100%; height: 100%;">
+  <div id="root" style="width: 100%; height: 100%;"></div>
+</div>
+
+<div id = "page-1">SOME TEXT</div>
+<div id = "page-2">SOME ANOTHER TEXT</div>
+<div id = "page-3">bla bla bla bla bla bla bla </div>
+<div id = "page-4">bla bla bla bla bla bla bla </div>
+<div id = "page-5">bla bla bla bla bla bla bla </div>
+<div id = "page-6">bla bla bla bla bla bla bla </div> 
 ```
   
 JS:  
 ```
-import scrolling from "./scrolling.js";  
-scrolling("root", [  
-    {id: "page-1", title: "Page 1", theme: {backgroundColor: "black", buttonColor: "#878787", buttonFocusColor: "#c2c2c2"}},  
-    {id: "page-2", title: "Page 2", theme: {backgroundColor: "#c2c2c2", buttonColor: "#878787", buttonFocusColor: "black"}},  
-    {id: "page-3", title: "Page 3", theme: {backgroundColor: "#9c0505", buttonColor: "black", buttonFocusColor: "white"}},  
-    {id: "page-4", title: "Page"},  
-    {id: "page-5", title: "Page", theme: "light"},  
-    {id: "page-6", title: "Page", theme: "dark"},  
-  ],  
-  {  
-    theme: {buttonColor: "red", buttonFocusColor: "yellow", backgroundColor: "blue"},  
-    startingPage: 2,  
-    userCSS: "/css/custom.css",  
-    animationSpeed: "none",  
-    blockScroll: false,  
-  }  
-);  
+import {scrolling} from "/scrolling";
+
+scrolling({
+        target: "root",
+        pages: [
+            {id: "page-1", title: "Page 1", theme: {backgroundColor: "black", buttonColor: "#878787", buttonFocusColor: "#c2c2c2"}},
+            {id: "page-2", title: "Page 2", theme: {backgroundColor: "#c2c2c2", buttonColor: "#878787", buttonFocusColor: "black"}},
+            {id: "page-3", title: "Page 3", theme: {backgroundColor: "#9c0505", buttonColor: "black", buttonFocusColor: "white"}},
+            {id: "page-4", title: "Page"},
+            {id: "page-5", title: "Page", theme: "light"},
+            {id: "page-6", title: "Page", theme: "dark"},
+        ],
+        options: {
+            theme: {buttonColor: "red", buttonFocusColor: "yellow", backgroundColor: "blue"},
+            startingPage: 2,
+            userCSS: "/css/custom.css",
+            blockScroll: false,
+        }
+    }
+);
 ```

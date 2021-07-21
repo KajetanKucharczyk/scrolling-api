@@ -208,12 +208,12 @@ class scrollingClass {
   buttonContainerTemplate() {
 
     return this.createDomElement(
-      "div",
-      {
-        "class": [
-          "scrolling-js-page-buttons-container"
-        ]
-      }
+        "div",
+        {
+          "class": [
+            "scrolling-js-page-buttons-container"
+          ]
+        }
     );
   }
 
@@ -224,40 +224,40 @@ class scrollingClass {
    */
   buttonTemplate(index) {
     let floatText = this.createDomElement(
-      "div",
-      {
-        "class": [
-          "scrolling-js-float-box", "hidden"
-        ],
-        "style": {
-          transition: this.ANIMATION_DURATION ? ("all " + this.ANIMATION_DURATION + "ms") : ("none")
-        }
-      },
-      this.INIT_PAGES[index].title
+        "div",
+        {
+          "class": [
+            "scrolling-js-float-box", "hidden"
+          ],
+          "style": {
+            transition: this.ANIMATION_DURATION ? ("all " + this.ANIMATION_DURATION + "ms") : ("none")
+          }
+        },
+        this.INIT_PAGES[index].title
     );
     let innerLinkButton = this.createDomElement(
-      "div",
-      {
-        "class": [
-          "scrolling-js-link-button"
-        ],
-        "style": {
-          transition: this.ANIMATION_DURATION ? ("all " + this.ANIMATION_DURATION + "ms") : ("none")
+        "div",
+        {
+          "class": [
+            "scrolling-js-link-button"
+          ],
+          "style": {
+            transition: this.ANIMATION_DURATION ? ("all " + this.ANIMATION_DURATION + "ms") : ("none")
+          }
         }
-      }
     );
     let linkButton = this.createDomElement(
-      "div",
-      {
-        "class": [
-          "scrolling-js-link-container"
-        ],
-        "counter": index.toString()
-      },
-      [
-        floatText,
-        innerLinkButton
-      ]
+        "div",
+        {
+          "class": [
+            "scrolling-js-link-container"
+          ],
+          "counter": index.toString()
+        },
+        [
+          floatText,
+          innerLinkButton
+        ]
     );
     linkButton.addEventListener("click", () => {
       if(!this.BLOCK_SCROLL) this.scrollPage(this.CONTAINER, this.COUNTER, index);
@@ -274,15 +274,15 @@ class scrollingClass {
   containerTemplate() {
 
     return this.createDomElement(
-      "div",
-      {
-        "class": [
-          "scrolling-js-container"
-        ],
-        "style": {
-          height: this.INIT_PAGES.length * 100 + "%",
+        "div",
+        {
+          "class": [
+            "scrolling-js-container"
+          ],
+          "style": {
+            height: this.INIT_PAGES.length * 100 + "%",
+          }
         }
-      }
     );
   }
 
@@ -308,20 +308,20 @@ class scrollingClass {
     return {
       domObject: domObject,
       pageTemplate: this.createDomElement(
-        "div",
-        {
-          "class": [
-            "scrolling-js-page"
-          ],
-          "id": page.id,
-          "title": this.checkVariable(page.title) ? page.title : "Default page title",
-          "style": {
-            backgroundColor: this.THEME.PAGES[index].backgroundColor,
-            height: (100 / this.INIT_PAGES.length) + "%",
-            backgroundImage: this.checkVariable(page.backgroundImage) ? pageTemplate.style.backgroundImage = "url(" + page.backgroundImage + ")" : "",
-          }
-        },
-        domObject.cloneNode(true)
+          "div",
+          {
+            "class": [
+              "scrolling-js-page"
+            ],
+            "id": page.id,
+            "title": this.checkVariable(page.title) ? page.title : "Default page title",
+            "style": {
+              backgroundColor: this.THEME.PAGES[index].backgroundColor,
+              height: (100 / this.INIT_PAGES.length) + "%",
+              backgroundImage: this.checkVariable(page.backgroundImage) ? pageTemplate.style.backgroundImage = "url(" + page.backgroundImage + ")" : "",
+            }
+          },
+          domObject.cloneNode(true)
       ),
       page: page,
       index: index
@@ -351,11 +351,11 @@ class scrollingClass {
    */
   CSSUploader(url) {
     document.getElementsByTagName("head")[0].appendChild(
-      this.createDomElement("link", {
-        "href": url,
-        "type": "text/css",
-        "rel": "stylesheet"
-      })
+        this.createDomElement("link", {
+          "href": url,
+          "type": "text/css",
+          "rel": "stylesheet"
+        })
     );
   }
 
@@ -377,7 +377,7 @@ class scrollingClass {
   }
 
   /**
-  /**
+   /**
    * Strona startowa
    *
    * @param options
@@ -627,7 +627,7 @@ class scrollingClass {
       else
         this.animateContainer(this.CONTAINER, this.ANIMATION_DURATION);
       if(nextPage >= 0 && nextPage <= (this.PAGES.length - 1) && !this.BLOCK_SCROLL) {
-        scrollingContainer.style.top = (-1) * nextPage * this.getDomElements("id", "scrolling_root").getBoundingClientRect().height + "px";
+        scrollingContainer.style.top = (-1) * nextPage * this.getDomElements("id", this.TARGET.getAttribute('id')).getBoundingClientRect().height + "px";
         if(this.PAGE_TITLE.PAGE_TITLE) this.setPageTitle(this.PAGE_TITLE.PAGE_TITLE_PREFIX, this.PAGE_TITLE.PAGE_TITLE_SEPARATOR, this.PAGES[nextPage].title);
         if(this.BUTTONS_VISIBLITY) this.buttons(nextPage);
         this.activatePage(nextPage);
